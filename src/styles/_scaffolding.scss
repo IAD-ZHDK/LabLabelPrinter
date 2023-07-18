@@ -4,22 +4,101 @@ html {
   background: $background-color;
   color: $font-color;
   line-height: 1.4;
+  background-color: black;
+  height: 100%;
+}
+
+@page {
+  size: 62mm 29mm;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.page {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border: dashed 1px transparent; // Or make red so you can see the page border
+  margin: 0;
+  page-break-after: always;
 }
 
 body {
-  margin: auto;
-  text-align: center;
-  max-width: $page-width;
+  padding:
+    0;
+  margin:
+    0;
+  background:
+    #000000;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
-h1 {
-  margin: 0 0 2rem;
+#printButton {
+  display: block;
+  position: relative;
+float: right;
 }
 
-.image {
-  display: inline-block;
-  height: 100px;
-  width: 100px;
-  background-image: url('~assets/example.png');
-  background-size: cover;
+#printbtnContainer {
+  width: $pageWidth*$scaler;
+}
+
+
+#labelContainer {
+  display:
+    block;
+  position:
+    relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  
+}
+
+#p5container {
+  width: $pageWidth*$scaler;
+}
+
+canvas {
+  width: 100%;
+
+}
+
+body {
+  margin: 40px;
+}
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+    background-color: #fff;
+    color: #444;
+  }
+
+  .box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+
+  }
+
+.a {
+  grid-column: auto / span 2;
+}
+
+.k {
+  grid-column: auto / span 3;
+}
+
+.g {
+  grid-column: auto / span 2;
+  grid-row: auto / span 2;
 }
