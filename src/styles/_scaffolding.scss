@@ -9,17 +9,18 @@ html {
 }
 
 @page {
-  size: 62mm 29mm;
+  size: $pageWidth mm $pageHeight mm;
   max-height: 100%;
-  max-width: 100%;
+  max-width: 100%
 }
+
 
 .page {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
   padding: 0;
-  border: dashed 1px transparent; // Or make red so you can see the page border
+  border: dashed 2px transparent; // Or make red so you can see the page border
   margin: 0;
   page-break-after: always;
 }
@@ -40,7 +41,7 @@ body {
 #printButton {
   display: block;
   position: relative;
-float: right;
+  float: right;
 }
 
 #printbtnContainer {
@@ -58,7 +59,6 @@ float: right;
   justify-content: center;
   flex-direction: column;
   height: 100%;
-  
 }
 
 #p5container {
@@ -67,38 +67,126 @@ float: right;
 
 canvas {
   width: 100%;
-
 }
+
+#qrCode {
+position: relative;
+float: right;
+}
+
+
 
 body {
   margin: 40px;
 }
-.wrapper {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
-    background-color: #fff;
-    color: #444;
-  }
 
-  .box {
-    background-color: #444;
-    color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
-
-  }
-
-.a {
-  grid-column: auto / span 2;
+#wrapper {
+  display: grid;
+  grid-gap: 0px;
+  width: $pageWidth*$scaler;
+  height: $pageHeight*$scaler;
+  grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+  grid-template-rows: [row] 4fr [row] 1fr [row] 1fr [row] 1fr [row] 1fr [row] 2fr;
+  background-color: #fff;
+  color: #444;
 }
 
-.k {
-  grid-column: auto / span 3;
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  resize: none;
+  width: 95%; 
+  max-height: 100%;
+  margin: 0;
+  border: none;
+  height: 1.2em;
+  background: transparent;
 }
 
-.g {
-  grid-column: auto / span 2;
-  grid-row: auto / span 2;
+#title {
+  border: none;
+  resize: none;
+  font-size: 2em;
+  position: relative;
+  float: left;
+  height: 100%;
+  max-width: 80%;
+  max-width: 79%;
+  max-height: 3em;
+  }
+
+.box {
+  background-color: #fff;
+  color: #000;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0px;
+  border-color: #000000;
+  padding: .25em;
+  font-size: 150%;
+}
+
+.header {
+  grid-column: col / span 6;
+  grid-row: row;
+}
+
+.url {
+  grid-column: col / span 6;
+  grid-row: row 2;
+}
+
+.material {
+  grid-column: col / span;
+  grid-row: row 3;
+}
+
+.materialInfo {
+  grid-column: col 2 / span 3;
+  grid-row: row 3;
+}
+
+.contact {
+  grid-column: col / span;
+  grid-row: row 4;
+}
+
+.contactInfo {
+  grid-column: col 2 / span 3;
+  grid-row: row 4;
+}
+
+.date {
+  grid-column: col / span;
+  grid-row: row 5;
+}
+
+.dateInfo {
+  grid-column: col 2 / span 3;
+  grid-row: row 5;
+}
+
+.notes {
+  grid-column: col / span 4;
+  grid-row: row 6;
+}
+
+.twoSpan {
+  grid-column:  span 2;
+}
+
+.lab {
+  background-color: #000;
+  color: #fff;
+}
+
+.emptySpace {
+  background: repeating-linear-gradient(
+  45deg,
+  #fff,
+  #fff 9px,
+  #000 9px,
+  #000 19px
+);
 }
