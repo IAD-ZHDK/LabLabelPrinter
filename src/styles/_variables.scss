@@ -3,16 +3,17 @@
     src: url('assets/fonts/OCRAM.ttf');
 }
 
-$font-size: .90rem;
 $font-family: OCRAM, 'Inter', sans-serif;
 $background-color: #121212;
 $font-color: #dae0e0;
-$pageHeight: 29px;
-$pageWidth: 62px;
-$scaler: 15;
+$scaler: 10;
+$padding: 10px;
+$labelHeight: 62px;
+$labelWidth: 100px;
 
 :export {
-    pageHeight: $pageHeight;
-    pageWidth: $pageWidth;
+    labelHeight: $labelHeight;
+    labelWidth: $labelWidth;
     scaler: $scaler;
+    pad: $padding;
 }

@@ -1,15 +1,15 @@
 html {
-  font-size: $font-size;
+  font-size: 14px;
   font-family: $font-family;
   background: $background-color;
   color: $font-color;
-  line-height: 1.4;
+  line-height: 1.6;
   background-color: black;
   height: 100%;
 }
 
 @page {
-  size: $pageWidth mm $pageHeight mm;
+  size: $labelWidth mm $labelHeight mm;
   max-height: 100%;
   max-width: 100%
 }
@@ -45,24 +45,7 @@ body {
 }
 
 #printbtnContainer {
-  width: $pageWidth*$scaler;
-}
-
-
-#labelContainer {
-  display:
-    block;
-  position:
-    relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-}
-
-#p5container {
-  width: $pageWidth*$scaler;
+  width: $labelWidth*$scaler;
 }
 
 canvas {
@@ -77,18 +60,42 @@ float: right;
 
 
 body {
-  margin: 40px;
+  margin: 10px;
 }
 
+#labelContainer {
+  display:
+    block;
+  position:
+    relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+
+#outerWrapper {
+  display:block;
+  width: ($labelWidth*$scaler);
+  height: ($labelHeight*$scaler);
+
+}
 #wrapper {
+  width:100%;
+  height: ($labelHeight*$scaler)-2*$padding;
+  width: ($labelWidth*$scaler)-2*$padding;
+  padding:$padding;
   display: grid;
   grid-gap: 0px;
-  width: $pageWidth*$scaler;
-  height: $pageHeight*$scaler;
   grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
   grid-template-rows: [row] 4fr [row] 1fr [row] 1fr [row] 1fr [row] 1fr [row] 2fr;
   background-color: #fff;
   color: #444;
+  bottom:0;
+  //margin: $padding;
 }
 
 
@@ -100,7 +107,8 @@ input {
   max-height: 100%;
   margin: 0;
   border: none;
-  height: 1.2em;
+  height: inherit;
+  font-size: 1.0em;
   background: transparent;
 }
 
@@ -123,8 +131,8 @@ input {
   border-style: solid;
   border-radius: 0px;
   border-color: #000000;
-  padding: .25em;
-  font-size: 150%;
+  padding: .45em;
+  font-size: 1.5em;
 }
 
 .header {

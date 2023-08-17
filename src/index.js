@@ -68,16 +68,16 @@ async function DOMContentLoadedEvent() {
 
     const inputDelegate = delegate('input[type=text]');
 
-    ['input','change'].forEach(function(evt) {
+    ['input', 'change'].forEach(function (evt) {
         document.body.addEventListener(evt, inputDelegate((el) => {
-        console.log('focus in', el.target.value)
-        if (el.target.value == null || el.target.value == "") {
-            el.target.parentNode.classList.add("emptySpace");
-        } else {
-            el.target.parentNode.classList.remove("emptySpace");
+            console.log('focus in', el.target.value)
+            if (el.target.value == null || el.target.value == "") {
+                el.target.parentNode.classList.add("emptySpace");
+            } else {
+                el.target.parentNode.classList.remove("emptySpace");
+            }
         }
-    }
-    ));
+        ));
     });
 }
 
@@ -93,7 +93,7 @@ function updateQRCode(text) {
     url = text;
     let QRCode = require('qrcode')
     QRCode.toCanvas(canvas, text, {
-        width: 145,  margin:0 
+        width: 145, margin: 0
     }, function (error) {
         if (error) console.error(error)
         console.log('success!');
@@ -102,7 +102,7 @@ function updateQRCode(text) {
 
 function goToUrl() {
     console.log("go to: " + url);
-    window.open(url, '', 'width=620, height=290');
+    window.open(url, '', 'width=800, height=400');
 }
 
 function printCanvas() {
@@ -115,13 +115,13 @@ function printCanvas() {
         console.log(dataUrl);
         var header_str = '<!DOCTYPE html>';
         header_str += '<html>'
-        header_str += '<head><title>Print canvas</title><style>@page {size: 62mm 29mm; max-height:100%; max-width:100%} html{background: #000000;} body{margin: 0;} img{display: block; width: 100%; height: 100%;}</style></head>';
+        header_str += '<head><title>Print canvas</title><style>@page {size: 100mm 62mm; max-height:100%; max-width:100%} html{background: #000000;} body{margin: 0;} img{display: block; width: 100%; height: 100%;}</style></head>';
         header_str += '<body>'
         let new_str = '<img src="' + dataUrl + '">';
         //let new_str = document.getElementById('wrapper');
         let footer_str = '</body></html>';
         let windowContent = header_str + new_str + footer_str;
-        var printWin = window.open('', '', 'width=620, height=290');
+        var printWin = window.open('', '', 'width=1000, height=620');
         printWin.document.open();
         printWin.document.write(windowContent);
         printWin.document.close();

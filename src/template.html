@@ -11,39 +11,46 @@
 
 <body>
   <div id='labelContainer'>
-    <div id="wrapper">
-      <div class="box header"><div id="title" contenteditable="true" spellcheck="false">New Project</div> <canvas id="qrCode"><canvas></canvas></div>
-      <div class="box url"> <input type="text" id="url" value="https://github.com/IAD-ZHDK/ReactiveSigns_2023"></input>
-      </div>
-      <div class="box material">MATERIAL</div>
-      <div class="box materialInfo">
-        <input list="materials" name="myBrowser" type="text" /></label>
-        <datalist id="materials">
-        <option value="Electronics">
-        <option value="Prototypes">
-        <option value="Diverse">
-        <option value="Chemicals">
-        <option value="Tools">
-        <option value="">
-      </datalist></input></div>
-      <div class="box contact">CONTACT</div>
-      <div class="box contactInfo"><input type="text" value="-"></input></div>
-      <div class="box date">DATE</div>
-      <div class="box dateInfo"><input type="text" value="-"></input></div>
-      <div class="box notes"><input type="text" value="Notes..."></input></div>
-      <div class="box dept twoSpan">INTERACTION DESIGN</div>
-      <div class="box room twoSpan">2.E20-3</div>
-      <div class="box zhdk twoSpan">ZHdK</div>
-      <div class="box lab twoSpan">PHYSICAL</br> COMPUTING</br> LAB</div>
-    </div>
-
+    <div id="outerWrapper">
+      <div id="wrapper">
+      
+        <div class="box header">
+          <div id="title" contenteditable="true" spellcheck="false">New Project</div> <canvas
+            id="qrCode"><canvas></canvas>
+        </div>
+        <div class="box url"> <input type="text" id="url"
+            value="https://github.com/IAD-ZHDK/ReactiveSigns_2023"></input>
+        </div>
+        <div class="box material">MATERIAL</div>
+        <div class="box materialInfo">
+          <input list="materials" name="myBrowser" type="text" /></label>
+          <datalist id="materials">
+            <option value="Electronics">
+            <option value="Prototypes">
+            <option value="Diverse">
+            <option value="Chemicals">
+            <option value="Tools">
+            <option value="">
+          </datalist></input>
+        </div>
+        <div class="box contact">CONTACT</div>
+        <div class="box contactInfo"><input type="text" value="-"></input></div>
+        <div class="box date">DATE</div>
+        <div class="box dateInfo"><input type="text" value="-"></input></div>
+        <div class="box notes"><input type="text" value="Notes..."></input></div>
+        <div class="box dept twoSpan">INTERACTION DESIGN</div>
+        <div class="box room twoSpan">2.E20-3</div>
+        <div class="box zhdk twoSpan">ZHdK</div>
+        <div class="box lab twoSpan">PHYSICAL</br> COMPUTING</br> LAB</div>
+    
+      </div><!--wrapper-->
+    </div><!--OuterWrapper-->
     <div id='printbtnContainer'>
       <button id="printButton">
         Print
       </button>
-    </div>
-  </div>
-  </div>
+    </div><!--printbtnContainer-->
+  </div><!--labelContainer-->
 
 </body>
 
