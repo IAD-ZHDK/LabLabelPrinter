@@ -55,8 +55,8 @@ canvas {
 #qrCode {
 position: relative;
 float: right;
-width:200px;
-height:200px
+width:200px !important;
+height:200px !important;
 }
 
 
@@ -193,11 +193,6 @@ input {
 }
 
 .emptySpace {
-  background: repeating-linear-gradient(
-  45deg,
-  #fff,
-  #fff 9px,
-  #000 9px,
-  #000 19px
-);
+  background: url(assets/tile.png);
+ 
 }

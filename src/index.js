@@ -1,5 +1,6 @@
 
 import html2canvas from 'html2canvas';
+
 var QRCode = require('qrcode')
 let print = document.createElement('button')
 
