@@ -55,6 +55,8 @@ canvas {
 #qrCode {
 position: relative;
 float: right;
+width:200px;
+height:200px
 }
 
 
@@ -115,7 +117,7 @@ input {
 #title {
   border: none;
   resize: none;
-  font-size: 2em;
+  font-size: 2.9em;
   position: relative;
   float: left;
   height: 100%;
@@ -186,6 +188,7 @@ input {
 
 .lab {
   background-color: #000;
+  font-size: 2em;
   color: #fff;
 }
 

@@ -48,6 +48,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "dom-to-image": "^2.6.0",
     "html2canvas": "^1.4.1",
     "p5": "^1.7.0",
     "print-js": "^1.6.0",
