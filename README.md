@@ -1,6 +1,6 @@
 A label generator for the Physical Computing lab at ZHdK
 
-Currently configured for 29mm by 62mm labels for Brother QL series printers 
+Currently configured for 29mm by 100mm labels for Brother QL series printers 
 
 [The web app can be accessed here.](https://iad-zhdk.github.io/LabLabelPrinter/)
 
