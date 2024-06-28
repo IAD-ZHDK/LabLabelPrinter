@@ -1,9 +1,9 @@
 {
-  "name": "webpack-boilerplate",
+  "name": "IAD LAB LABEL PRINTER",
   "version": "3.0.2",
-  "description": "Sensible webpack 5 boilerplate using Babel and PostCSS.",
+  "description": "A simple form for labels for the IAD LAB",
   "main": "index.js",
-  "author": "Tania Rascia",
+  "author": "Luke Franzke",
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:taniarascia/webpack-boilerplate"
+    "url": "git@github.com:IAD-ZHDK/LabLabelPrinter"
   },
   "devDependencies": {
     "@babel/core": "^7.20.7",

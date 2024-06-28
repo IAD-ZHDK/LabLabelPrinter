@@ -1,5 +1,4 @@
 html {
-  font-size: 14px;
   font-family: $font-family;
   background: $background-color;
   color: $font-color;
@@ -8,12 +7,13 @@ html {
   height: 100%;
 }
 
+/*
 @page {
   size: $labelWidth mm $labelHeight mm;
   max-height: 100%;
   max-width: 100%
 }
-
+*/
 
 .page {
   box-sizing: border-box;
@@ -53,12 +53,11 @@ canvas {
 }
 
 #qrCode {
-position: relative;
-float: right;
-width:200px !important;
-height:200px !important;
+  position: relative;
+  float: right;
+  width: 200px !important;
+  height: 200px !important;
 }
-
 
 
 body {
@@ -80,32 +79,52 @@ body {
 
 
 #outerWrapper {
-  display:block;
+  display: block;
+}
+
+.large_62mm_100mm #outerWrapper{
   width: ($labelWidth*$scaler);
   height: ($labelHeight*$scaler);
-
+  font-size: 14px;
 }
+
+.small_29mm_62mm #outerWrapper {
+  width: ($labelWidthSmall*$scaler);
+  height: ($labelHeightSmall*$scaler);
+  font-size: 8px;
+}
+
 #wrapper {
-  width:100%;
-  height: ($labelHeight*$scaler)-2*$padding;
-  width: ($labelWidth*$scaler)-2*$padding;
-  padding:$padding;
+  width: 100%;
+  padding: $padding;
   display: grid;
   grid-gap: 0px;
-  grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
-  grid-template-rows: [row] 4fr [row] 1fr [row] 1fr [row] 1fr [row] 1fr [row] 2fr;
+
   background-color: #fff;
   color: #444;
-  bottom:0;
+  bottom: 0;
   //margin: $padding;
 }
 
+.large_62mm_100mm #wrapper {
+  height: ($labelHeight*$scaler)-2*$padding;
+  width: ($labelWidth*$scaler)-2*$padding;
+  grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+  grid-template-rows: [row] 4fr [row] 1fr [row] 1fr [row] 1fr [row] 1fr [row] 2fr;
+}
+
+.small_29mm_62mm #wrapper {
+  height: ($labelHeightSmall*$scaler)-2*$padding;
+  width: ($labelWidthSmall*$scaler)-2*$padding;
+  grid-template-columns: [col] 1fr [col] 1fr [col] 1fr;
+  grid-template-rows: [row] 4fr [row] 1fr [row] 1fr [row] 1fr [row] 1fr;
+}
 
 input {
   font-family: inherit;
   font-size: inherit;
   resize: none;
-  width: 95%; 
+  width: 95%;
   max-height: 100%;
   margin: 0;
   border: none;
@@ -113,18 +132,6 @@ input {
   font-size: 1.0em;
   background: transparent;
 }
-
-#title {
-  border: none;
-  resize: none;
-  font-size: 2.9em;
-  position: relative;
-  float: left;
-  height: 100%;
-  max-width: 80%;
-  max-width: 79%;
-  max-height: 3em;
-  }
 
 .box {
   background-color: #fff;
@@ -136,6 +143,25 @@ input {
   padding: .45em;
   font-size: 1.5em;
 }
+
+.emptySpace {
+  background: url(assets/tile.png);
+
+}
+
+/* LARGE */
+
+#title {
+  border: none;
+  resize: none;
+  font-size: 2.9em;
+  position: relative;
+  float: left;
+  height: 100%;
+  max-width: 80%;
+  max-height: 3em;
+}
+
 
 .header {
   grid-column: col / span 6;
@@ -183,7 +209,7 @@ input {
 }
 
 .twoSpan {
-  grid-column:  span 2;
+  grid-column: span 2;
 }
 
 .lab {
@@ -192,7 +218,74 @@ input {
   color: #fff;
 }
 
-.emptySpace {
-  background: url(assets/tile.png);
- 
+/* small  */
+
+.small_29mm_62mm #title {
+  border: none;
+  resize: none;
+  font-size: 1.9em;
+  position: relative;
+  float: left;
+  height: 100%;
+  max-width: 60%;
+  max-height: 2em;
+}
+
+.small_29mm_62mm #qrCode {
+  position: relative;
+  float: right;
+  width: 130px !important;
+  height: 130px !important;
+}
+
+
+.small_29mm_62mm .header {
+  grid-column: col / span 3;
+  grid-row: row;
+}
+
+.small_29mm_62mm .url {
+  grid-column: col / span 3;
+  grid-row: row 2;
+}
+
+.small_29mm_62mm .material {
+  display: none;
+}
+
+.small_29mm_62mm .materialInfo {
+  display: none;
+}
+
+.small_29mm_62mm .contact {
+  display: none;
+}
+
+.small_29mm_62mm .contactInfo {
+  display: none;
+}
+
+.small_29mm_62mm .date {
+  display: none;
+}
+
+.small_29mm_62mm .dateInfo {
+  display: none;
+}
+
+.small_29mm_62mm .notes {
+  display: none;
+}
+
+.small_29mm_62mm .lab {
+  grid-column: col 3 / span 1;
+  grid-row: row 3  / span 3;
+  background-color: #000;
+  font-size: 2em;
+  color: #fff;
+}
+
+
+.small_29mm_62mm #printbtnContainer {
+  width: $labelWidthSmall*$scaler;
 }

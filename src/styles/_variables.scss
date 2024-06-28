@@ -10,10 +10,14 @@ $scaler: 10;
 $padding: 10px;
 $labelHeight: 62px;
 $labelWidth: 100px;
+$labelHeightSmall: 29px;
+$labelWidthSmall: 62px;
 
 :export {
     labelHeight: $labelHeight;
     labelWidth: $labelWidth;
+    labelHeightSmall: $labelHeightSmall;
+    labelWidthSmall: $labelWidthSmall;
     scaler: $scaler;
     pad: $padding;
 }

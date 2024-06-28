@@ -1,8 +1,27 @@
 
 import html2canvas from 'html2canvas';
 
-var QRCode = require('qrcode')
+let QRCode = require('qrcode')
 let print = document.createElement('button')
+// sizes
+
+
+let sizes = [
+    {
+        name: "large_62mm_100mm",
+        width: 100,
+        height: 62,
+        index: 0
+    },
+    {
+        name: "small_29mm_62mm",
+        width: 62,
+        height: 29,
+        index: 1
+    }
+];
+
+let currentSize = sizes[0];
 
 //  import of styles
 import '@/styles/index.scss'
@@ -26,11 +45,22 @@ async function DOMContentLoadedEvent() {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
+
+    setUpSize()
+
     document.getElementById('date').value = formattedDate   // set date default
+    // buttons 
     document.getElementById('printButton').addEventListener('click', function () {
         console.log("trying to print")
         printCanvas()
     });
+    // 
+
+    document.getElementById('sizeChange').addEventListener('click', function () {
+        console.log("change size")
+        setUpSize();
+    });
+
     let urlText = document.getElementById("url");
     updateQRCode(urlText.value)
     urlText.addEventListener("change", (event) => {
@@ -86,23 +116,52 @@ function goToUrl() {
     window.open(url, '', 'width=800, height=400');
 }
 
+function setUpSize() {
+
+    let index = currentSize.index;
+    index++;
+
+
+    if (index >= sizes.length) {
+        index = 0;
+    }
+
+    currentSize = sizes[index];
+
+    //remove old style
+    document.getElementById("labelContainer").classList.remove('large_62mm_100mm');
+    document.getElementById("labelContainer").classList.remove('small_29mm_62mm');
+
+
+    let label = document.getElementById('sizeLabel'); 
+    label.innerHTML = '';
+    label.innerHTML = currentSize.name;
+    // change size
+
+
+
+    // add new style 
+
+    document.getElementById("labelContainer").classList.add(currentSize.name);
+}
+
 function printCanvas() {
 
     let container = document.getElementById('wrapper');
 
     html2canvas(container).then(function (canvas) {
-        //   document.body.appendChild(canvas);
+
         var dataUrl = canvas.toDataURL(); //attempt to save base64 string to server using this var  
         console.log(dataUrl);
         var header_str = '<!DOCTYPE html>';
         header_str += '<html>'
-        header_str += '<head><title>Print canvas</title><style>@page {size: 100mm 62mm; max-height:100%; max-width:100%} html{background: #000000;} body{margin: 0;} img{display: block; width: 100%; height: 100%;}</style></head>';
+        header_str += '<head><title>Print canvas</title><style>@page {size: ' + currentSize.width + 'mm ' + currentSize.height + 'mm; max-height:100%; max-width:100%} html{background: #000000;} body{margin: 0;} img{display: block; width: 100%; height: 100%;}</style></head>';
         header_str += '<body>'
         let new_str = '<img src="' + dataUrl + '">';
         //let new_str = document.getElementById('wrapper');
         let footer_str = '</body></html>';
         let windowContent = header_str + new_str + footer_str;
-        var printWin = window.open('', '', 'width=1000, height=620');
+        var printWin = window.open('', '', 'width=' + currentSize.width * 10 + ', height=' + currentSize.height * 10);
         printWin.document.open();
         printWin.document.write(windowContent);
         printWin.document.close();
