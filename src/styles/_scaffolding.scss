@@ -146,7 +146,6 @@ input {
 
 .emptySpace {
   background: url(assets/tile.png);
-
 }
 
 /* LARGE */
@@ -154,12 +153,14 @@ input {
 #title {
   border: none;
   resize: none;
-  font-size: 2.9em;
+  font-size: 2.3em;
   position: relative;
   float: left;
   height: 100%;
-  max-width: 80%;
-  max-height: 3em;
+  max-width: 79%;
+  line-height: 1.4em;
+  max-height: 4.2em;
+  overflow: hidden;
 }
 
 
@@ -223,12 +224,13 @@ input {
 .small_29mm_62mm #title {
   border: none;
   resize: none;
-  font-size: 1.9em;
+  font-size: 3.4em;
+  line-height: 1.4em;
   position: relative;
   float: left;
   height: 100%;
-  max-width: 60%;
-  max-height: 2em;
+  max-width: 75%;
+  max-height: 2.7em;
 }
 
 .small_29mm_62mm #qrCode {

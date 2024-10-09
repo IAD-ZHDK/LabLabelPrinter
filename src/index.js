@@ -84,6 +84,7 @@ async function DOMContentLoadedEvent() {
             console.log('focus in', el.target.value)
             if (el.target.value == null || el.target.value == "") {
                 el.target.parentNode.classList.add("emptySpace");
+                console.log("empty space")
             } else {
                 el.target.parentNode.classList.remove("emptySpace");
             }
