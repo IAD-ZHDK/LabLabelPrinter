@@ -107,8 +107,7 @@ function updateQRCode(text) {
     QRCode.toCanvas(canvas, text, {
         width: 145, margin: 0
     }, function (error) {
-        if (error) console.error(error)
-        console.log('success!');
+        console.log('no QR code generated');
     })
 }
 
