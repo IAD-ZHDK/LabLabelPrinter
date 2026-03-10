@@ -12,12 +12,16 @@ $labelHeight: 62px;
 $labelWidth: 100px;
 $labelHeightSmall: 29px;
 $labelWidthSmall: 62px;
+$labelHeightPrice: 62px;
+$labelWidthPrice: 100px;
 
 :export {
     labelHeight: $labelHeight;
     labelWidth: $labelWidth;
     labelHeightSmall: $labelHeightSmall;
     labelWidthSmall: $labelWidthSmall;
+    labelHeightPrice: $labelHeightPrice;
+    labelWidthPrice: $labelWidthPrice;
     scaler: $scaler;
     pad: $padding;
 }

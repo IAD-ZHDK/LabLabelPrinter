@@ -18,6 +18,12 @@ let sizes = [
         width: 62,
         height: 29,
         index: 1
+    },
+    {
+        name: "monitoni_price_64mm_100mm",
+        width: 100,
+        height: 64,
+        index: 2
     }
 ];
 
@@ -47,6 +53,7 @@ async function DOMContentLoadedEvent() {
     const formattedDate = `${year}-${month}-${day}`;
 
     setUpSize()
+    updateLabLineBreaks()
 
     document.getElementById('date').value = formattedDate   // set date default
     // buttons 
@@ -56,9 +63,10 @@ async function DOMContentLoadedEvent() {
     });
     // 
 
-    document.getElementById('sizeChange').addEventListener('click', function () {
+    document.getElementById('sizeChange').addEventListener('change', function (event) {
         console.log("change size")
-        setUpSize();
+        let selectedIndex = parseInt(event.target.value);
+        setUpSize(selectedIndex);
     });
 
     let urlText = document.getElementById("url");
@@ -77,7 +85,7 @@ async function DOMContentLoadedEvent() {
 
     const delegate = (selector) => (cb) => (e) => e.target.matches(selector) && cb(e);
 
-    const inputDelegate = delegate('input[type=text]');
+    const inputDelegate = delegate('input[type=text], textarea');
 
     ['input', 'change'].forEach(function (evt) {
         document.body.addEventListener(evt, inputDelegate((el) => {
@@ -91,6 +99,43 @@ async function DOMContentLoadedEvent() {
         }
         ));
     });
+
+    window.addEventListener('resize', () => {
+        updateLabLineBreaks();
+        if (url) {
+            updateQRCode(url);
+        }
+    });
+}
+
+function updateLabLineBreaks() {
+    const labText = document.querySelector('.lab b');
+    if (!labText) {
+        return;
+    }
+
+    const variants = [
+        'PHYSICAL COMPUTING LAB',           // 1 line
+        'PHYSICAL<br>COMPUTING<br>LAB'      // 3 lines (fallback)
+    ];
+
+    for (let variant of variants) {
+        labText.innerHTML = variant;
+        // Force layout recalculation multiple times to ensure browser recalculates
+        labText.offsetHeight;
+        labText.offsetHeight;
+
+        // Check if content is overflowing visually
+        const isOverflowing = labText.scrollWidth > labText.clientWidth ||
+            labText.scrollHeight > labText.clientHeight;
+
+        if (!isOverflowing) {
+            return; // This variant fits, we're done
+        }
+    }
+
+    // Fallback to last variant if nothing else fits
+    labText.innerHTML = variants[variants.length - 1];
 }
 
 function updateQRCode(text) {
@@ -104,8 +149,17 @@ function updateQRCode(text) {
 
     url = text;
     let QRCode = require('qrcode')
+
+    let qrWidth = 145;
+    if (currentSize.name === 'monitoni_price_64mm_100mm') {
+        const qrContainer = document.querySelector('.monitoni_price_64mm_100mm .header');
+        if (qrContainer) {
+            qrWidth = Math.floor(qrContainer.clientWidth - 24);
+        }
+    }
+
     QRCode.toCanvas(canvas, text, {
-        width: 145, margin: 0
+        width: qrWidth, margin: 0
     }, function (error) {
         console.log('no QR code generated');
     })
@@ -116,14 +170,11 @@ function goToUrl() {
     window.open(url, '', 'width=800, height=400');
 }
 
-function setUpSize() {
+function setUpSize(index) {
 
-    let index = currentSize.index;
-    index++;
-
-
-    if (index >= sizes.length) {
-        index = 0;
+    // If no index provided, use the current size index
+    if (index === undefined) {
+        index = currentSize.index;
     }
 
     currentSize = sizes[index];
@@ -131,9 +182,10 @@ function setUpSize() {
     //remove old style
     document.getElementById("labelContainer").classList.remove('large_62mm_100mm');
     document.getElementById("labelContainer").classList.remove('small_29mm_62mm');
+    document.getElementById("labelContainer").classList.remove('monitoni_price_64mm_100mm');
 
 
-    let label = document.getElementById('sizeLabel'); 
+    let label = document.getElementById('sizeLabel');
     label.innerHTML = '';
     label.innerHTML = currentSize.name;
     // change size
@@ -143,6 +195,14 @@ function setUpSize() {
     // add new style 
 
     document.getElementById("labelContainer").classList.add(currentSize.name);
+
+    updateLabLineBreaks();
+
+    // Update QR code size for the new format
+    let urlText = document.getElementById("url");
+    if (urlText && urlText.value) {
+        updateQRCode(urlText.value);
+    }
 }
 
 function printCanvas() {

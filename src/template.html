@@ -10,17 +10,16 @@
 </head>
 
 <body>
-  <div id='labelContainer'  class="large_62mm_100mm">
+  <div id='labelContainer' class="large_62mm_100mm">
     <div id="sizeLabel"></div>
     <div id="outerWrapper">
       <div id="wrapper">
-      
+
         <div class="box header">
           <div id="title" contenteditable="true" spellcheck="false">New Project</div> <canvas
             id="qrCode"><canvas></canvas>
         </div>
-        <div class="box url"> <input type="text" id="url"
-            value="https://github.com/IAD-ZHDK/ReactiveSigns_2023"></input>
+        <div class="box url"> <input type="text" id="url" value="https://monitoni.zhdk.ch/products/4460"></input>
         </div>
         <div class="box material">MATERIAL</div>
         <div class="box materialInfo">
@@ -38,21 +37,23 @@
         <div class="box contactInfo"><input type="text" value="-"></input></div>
         <div class="box date">DATE</div>
         <div class="box dateInfo"><input id="date" type="date"></input></div>
-        <div class="box notes"><input type="text" value="Notes..."></input></div>
+        <div class="box notes"><textarea>Notes...</textarea></div>
         <div class="box dept twoSpan">INTERACTION DESIGN</div>
         <div class="box room twoSpan">2.E20-3</div>
         <div class="box zhdk twoSpan">ZHdK</div>
         <div class="box lab twoSpan"><b>PHYSICAL</br> COMPUTING</br> LAB</b></div>
-    
+
       </div><!--wrapper-->
     </div><!--OuterWrapper-->
     <div id='printbtnContainer'>
       <button id="printButton">
         Print
       </button>
-      <button id="sizeChange">
-        change size
-      </button>
+      <select id="sizeChange">
+        <option value="0">Large (62mm x 100mm)</option>
+        <option value="1">Small (29mm x 62mm)</option>
+        <option value="2">Moni-Toni Price Tag (64mm x 100mm)</option>
+      </select>
     </div><!--printbtnContainer-->
   </div><!--labelContainer-->
 

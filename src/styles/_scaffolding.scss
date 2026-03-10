@@ -44,6 +44,16 @@ body {
   float: right;
 }
 
+#addRowButton {
+  display: none;
+}
+
+.monitoni_price_64mm_100mm #addRowButton {
+  display: block;
+  position: relative;
+  float: right;
+}
+
 #printbtnContainer {
   width: $labelWidth*$scaler;
 }
@@ -82,7 +92,7 @@ body {
   display: block;
 }
 
-.large_62mm_100mm #outerWrapper{
+.large_62mm_100mm #outerWrapper {
   width: ($labelWidth*$scaler);
   height: ($labelHeight*$scaler);
   font-size: 14px;
@@ -92,6 +102,12 @@ body {
   width: ($labelWidthSmall*$scaler);
   height: ($labelHeightSmall*$scaler);
   font-size: 8px;
+}
+
+.monitoni_price_64mm_100mm #outerWrapper {
+  width: ($labelWidthPrice*$scaler);
+  height: ($labelHeightPrice*$scaler);
+  font-size: 14px;
 }
 
 #wrapper {
@@ -120,6 +136,13 @@ body {
   grid-template-rows: [row] 4fr [row] 1fr [row] 1fr [row] 1fr [row] 1fr;
 }
 
+.monitoni_price_64mm_100mm #wrapper {
+  height: ($labelHeight*$scaler)-2*$padding;
+  width: ($labelWidth*$scaler)-2*$padding;
+  grid-template-columns: [col] 1fr [col] 1fr;
+  grid-template-rows: [row] 1fr [row] 6fr [row] auto;
+}
+
 input {
   font-family: inherit;
   font-size: inherit;
@@ -131,6 +154,20 @@ input {
   height: inherit;
   font-size: 1.0em;
   background: transparent;
+}
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  resize: none;
+  width: 95%;
+  max-height: 100%;
+  margin: 0;
+  border: none;
+  height: 100%;
+  font-size: 1.0em;
+  background: transparent;
+  line-height: 1.25;
 }
 
 .box {
@@ -281,7 +318,7 @@ input {
 
 .small_29mm_62mm .lab {
   grid-column: col 3 / span 1;
-  grid-row: row 3  / span 3;
+  grid-row: row 3 / span 3;
   background-color: #000;
   font-size: 2em;
   color: #fff;
@@ -290,4 +327,128 @@ input {
 
 .small_29mm_62mm #printbtnContainer {
   width: $labelWidthSmall*$scaler;
+}
+
+/* MONITONI PRICE TAG */
+
+.monitoni_price_64mm_100mm #qrCode {
+  position: relative;
+  float: none;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+  max-width: none;
+  max-height: none;
+}
+
+.monitoni-label {
+  display: none;
+}
+
+.monitoni_price_64mm_100mm .monitoni-label {
+  display: block;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-top: 0.2em;
+  margin-bottom: 0;
+  width: 100%;
+  line-height: 1;
+  color: #000;
+}
+
+.monitoni_price_64mm_100mm .header {
+  grid-column: col 2 / span 1;
+  grid-row: row / span 2;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.45em;
+  gap: 0.1em;
+}
+
+.monitoni_price_64mm_100mm .url {
+  grid-column: col 2 / span 1;
+  grid-row: row 3;
+  font-size: 0.72em;
+  height: auto;
+}
+
+.monitoni_price_64mm_100mm .material,
+.monitoni_price_64mm_100mm .materialInfo,
+.monitoni_price_64mm_100mm .contact,
+.monitoni_price_64mm_100mm .contactInfo,
+.monitoni_price_64mm_100mm .date,
+.monitoni_price_64mm_100mm .dateInfo,
+.monitoni_price_64mm_100mm .dept,
+.monitoni_price_64mm_100mm .room,
+.monitoni_price_64mm_100mm .zhdk {
+  display: none;
+}
+
+.monitoni_price_64mm_100mm .notes {
+  display: block;
+  grid-column: col / span 1;
+  grid-row: row 2 / span 2;
+  font-size: 1.2em;
+  padding: 0.8em;
+}
+
+.price-table {
+  display: none;
+}
+
+.monitoni_price_64mm_100mm .price-table {
+  display: flex;
+  flex-direction: column;
+  grid-column: col / span 1;
+  grid-row: row 2 / span 2;
+  gap: 0.0em;
+  padding: 0px !important;
+}
+
+.price-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 0.2em;
+}
+
+.price-row.emptySpace {
+  background: url(assets/tile.png);
+}
+
+.price-spacer {
+  display: none;
+  flex: 1;
+  background: url(assets/tile.png);
+}
+
+.monitoni_price_64mm_100mm .price-spacer {
+  display: block;
+}
+
+.price-item,
+.price-price,
+.price-unit {
+  font-family: inherit;
+  font-size: 0.75em;
+  resize: none;
+  margin: 0;
+  padding: 0.2em;
+  background: transparent;
+}
+
+.monitoni_price_64mm_100mm .lab {
+  grid-column: col / span 1;
+  grid-row: row 1;
+  background-color: #000;
+  font-size: 1.25em;
+  color: #fff;
+  text-align: center;
+}
+
+.monitoni_price_64mm_100mm #printbtnContainer {
+  width: $labelWidthPrice*$scaler;
 }
